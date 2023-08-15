@@ -1,3 +1,17 @@
+let currentQuestionIndex = 0
+let checkClick = false
+
+const nextBtn = document.getElementById("nextBtn")
+
+const pointsIndicator = document.getElementById("pointsIndicator")
+const currentQuestionNumber = document.getElementById("currentQuestionNumber")
+const totalQuestionIndicator = document.getElementById("totalQuestionIndicator")
+const difficultyIndicator = document.getElementById("difficultyIndicator")
+
+const finalResultPage = document.querySelector('.finalResultPage')
+const resultWrapper = document.getElementById('finalResultPageWrapper')
+const resultPointsDisplay = document.getElementById("resultPointsDisplay")
+
 const urlToFetch = createURLToFetch()
 fetchQuestions(urlToFetch)
 	.then(questions => {
@@ -23,11 +37,10 @@ fetchQuestions(urlToFetch)
 		
 		nextBtn.addEventListener('click', startNewQuestion)
 	})
-	.catch(err => updatePreloader('error'))
-
-
-var currentQuestionIndex = 0
-var checkClick = false
+	.catch(err => {
+		console.log(err)
+		updatePreloader('error')
+	})
 
 // Functions
 // Creates Choices Button Element
@@ -72,11 +85,6 @@ function updateQuestionDisplay(question){
 }
 
 // Updates point, question indicators
-const pointsIndicator = document.getElementById("pointsIndicator")
-var currentQuestionNumber = document.getElementById("currentQuestionNumber")
-var totalQuestionIndicator = document.getElementById("totalQuestion")
-var difficultyIndicator = document.getElementById("difficultyIndicator")
-
 function updateIndicators(choiceBtn, choicesWrapper, answer, correct){
 	const otherChoicesBtn = choicesWrapper.querySelectorAll('button')
 	if(answer){
@@ -98,8 +106,6 @@ function updateIndicators(choiceBtn, choicesWrapper, answer, correct){
 		})
 	}
 }
-
-var nextBtn = document.getElementById("nextBtn")
 
 // Procedures to the next questions
 function showNextBtn(questions){
@@ -124,9 +130,6 @@ function hideNextBtn(){
 	}, 150)
 }
 
-const finalResultPage = document.querySelector('.finalResultPage')
-const resultWrapper = finalResultPage.querySelector('.wrapper')
-const resultPointsDisplay = document.getElementById("resultPointsDisplay")
 // Show final result and allow user to restart or go back to main menu
 function showFinalResult(questionsLength){
 	resultPointsDisplay.innerText = `${pointsIndicator.innerText} out of ${totalQuestionIndicator.innerText}`
