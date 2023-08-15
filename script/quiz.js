@@ -5,7 +5,7 @@ const nextBtn = document.getElementById("nextBtn")
 
 const pointsIndicator = document.getElementById("pointsIndicator")
 const currentQuestionNumber = document.getElementById("currentQuestionNumber")
-const totalQuestionIndicator = document.getElementById("totalQuestionIndicator")
+const totalQuestionIndicator = document.getElementById("totalQuestion")
 const difficultyIndicator = document.getElementById("difficultyIndicator")
 
 const finalResultPage = document.querySelector('.finalResultPage')
