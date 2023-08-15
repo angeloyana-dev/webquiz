@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <meta charset="UTF-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	  <link rel="preconnect" href="https://fonts.googleapis.com" />
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	  <link
+	    href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	    rel="stylesheet"
+	  />
+	  <link
+	    rel="stylesheet"
+	    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+	    crossorigin="anonymous"
+	    referrerpolicy="no-referrer"
+	  />
+	  <link rel="stylesheet" href="./css/landing.css" />
+	  <script defer src="./script/landing.js"></script>
+	  <title>Quiz App | Getting Started</title>
+	</head>
+	<body>
+		<header>
+			<!-- This is just for style -->
+			<div></div>
+			
+			<!-- Intro section -->
+			<div class="intro">
+				<h1>Learn anytime, anywhere</h1>
+				<p>Answer over 4000+ questions and you can learn at you own pace!</p>
+				<div>
+					<button class="btn main" onclick="quickStart()">
+						<span>Quick Start</span>
+					</button>
+					<button class="btn main-outline" onclick="showCustomize()">
+						<span>Customize</span>
+					</button>
+				</div>
+			</div>
+		</header>
+		
+		<!-- Customization page section -->
+		<section id="customize">
+			
+			<!-- Main wrapper for all customizer -->
+		  <form action="quiz.html" class="wrapper">
+		    <i class="fa-solid fa-xmark" onclick="closeCustomize()"></i>
+		    <h2>Customize <i class="fa-solid fa-gears"></i></h2>
+		    <div>
+		      
+		      <!-- Category button part, the category list page is at the very bottom -->
+		      <div class="category-wrapper">
+		        <h3>Category:</h3>
+		        <p class="caption">
+		          Select from over 20+ categories including math, science, computers, or
+		          even about anime. Default - Random
+		        </p>
+		        <button
+		          onclick="showCategoriesList()"
+		          type="button"
+		          class="btn main-outline"
+		        >
+		          <span id="selectedCategoryDisplay">Select Category</span>
+		        </button>
+		      </div>
+		      
+		      <!-- Question type section -->
+		      <div class="question-type-wrapper">
+		        <h3>Questions Type:</h3>
+		        <p class="caption">
+		          Multiple choices or True or False?
+		          <span id="questionTypeDisplay">Default - Random</span>
+		        </p>
+		        <div class="question-type-choices-wrapper">
+		          
+		          <!-- Question type choices list -->
+		          <button
+		            onclick="applyQuestionType('random')"
+		            type="button"
+		            class="btn random-type"
+		          >
+		            <span>Random</span>
+		          </button>
+		          <button
+		            onclick="applyQuestionType('multiple')"
+		            type="button"
+		            class="btn multiple-choices"
+		          >
+		            <span>Multiple choices</span>
+		          </button>
+		          <button
+		            onclick="applyQuestionType('boolean')"
+		            type="button"
+		            class="btn true-false"
+		          >
+		            <span>True or False</span>
+		          </button>
+		        </div>
+		      </div>
+		      
+		      <!-- Difficulty section -->
+		      <div class="difficulty-wrapper">
+		        <h3>Difficulty:</h3>
+		        <p class="caption">
+		          Question hardness.
+		          <span id="difficultyDisplay">Default - Random</span>
+		        </p>
+		        <div class="difficulty-grid">
+		          
+		          <!-- Question difficulty choices -->
+		          <button
+		            onclick="applyDifficulty('random')"
+		            type="button"
+		            class="btn random"
+		          >
+		            <span>Random</span>
+		          </button>
+		          <button
+		            onclick="applyDifficulty('easy')"
+		            type="button"
+		            class="btn easy"
+		          >
+		            <span>Easy</span>
+		          </button>
+		          <button
+		            onclick="applyDifficulty('medium')"
+		            type="button"
+		            class="btn medium"
+		          >
+		            <span>Medium</span>
+		          </button>
+		          <button
+		            onclick="applyDifficulty('hard')"
+		            type="button"
+		            class="btn hard"
+		          >
+		            <span>Hard</span>
+		          </button>
+		        </div>
+		      </div>
+		      
+		      <!-- Question amount section -->
+		      <div class="question-count-wrapper">
+		        <h3>How many questions?</h3>
+		        <p class="caption">Total number of questions.</p>
+		        <div class="counter-group">
+		          <button onclick="applyQuestionCount('decrement')" type="button">
+		            <i class="fa-solid fa-arrow-left"></i>
+		          </button>
+		          <span id="questionCountDisplay">10</span>
+		          <button onclick="applyQuestionCount('increment')" type="button">
+		            <i class="fa-solid fa-arrow-right"></i>
+		          </button>
+		        </div>
+		      </div>
+		      
+		     <!-- Stores all customization value that will be used as query in quiz.html when fetching the questions -->
+		      <div class="submit-wrapper">
+		        <input type="hidden" name="category" value="random" />
+		        <input type="hidden" name="type" value="random" />
+		        <input type="hidden" name="difficulty" value="random" />
+		        <input type="hidden" name="amount" value="10" />
+		        
+		        <!-- Button to submit the hidden input( the queries ) to main part ( quiz.html ) -->
+		        <button class="btn main">
+		          <span>Next</span>
+		        </button>
+		      </div>
+		    </div>
+		  </form>
+		</section>
+		
+		<!-- Category List Section -->
+		<div id="categoriesList">
+		  <div class="search-area">
+		    <input id="searchInputCategories" type="text" placeholder="Search categories" />
+		    <i onclick="closeCategoriesList()" class="fa-solid fa-xmark"></i>
+		  </div>
+		  <div id="categoriesButtons">
+		    
+		    <!-- Category list section -->
+		    <!-- It's only huge because of styling -->
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="random"
+		      class="btn main"
+		    >
+		      <span>Random</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="9"
+		      class="btn main"
+		    >
+		      <span>General Knowledge</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="10"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Books</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="11"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Film</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="12"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Music</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="13"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Musicals & Theatres</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="14"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Television</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="15"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Video Games</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="16"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Board Games</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="17"
+		      class="btn main"
+		    >
+		      <span>Science & Nature</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="18"
+		      class="btn main"
+		    >
+		      <span>Science: Computers</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="19"
+		      class="btn main"
+		    >
+		      <span>Science: Mathematics</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="20"
+		      class="btn main"
+		    >
+		      <span>Mythology</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="21"
+		      class="btn main"
+		    >
+		      <span>Sports</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="22"
+		      class="btn main"
+		    >
+		      <span>Geography</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="23"
+		      class="btn main"
+		    >
+		      <span>History</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="24"
+		      class="btn main"
+		    >
+		      <span>Politics</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="25"
+		      class="btn main"
+		    >
+		      <span>Art</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="26"
+		      class="btn main"
+		    >
+		      <span>Celebrities</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="27"
+		      class="btn main"
+		    >
+		      <span>Animals</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="28"
+		      class="btn main"
+		    >
+		      <span>Vehicles</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="29"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Comics</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="30"
+		      class="btn main"
+		    >
+		      <span>Science: Gadgets</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="31"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Japanese Anime & Manga</span>
+		    </button>
+		    <button
+		      onclick="applyCategory(this.value, this.innerText)"
+		      value="32"
+		      class="btn main"
+		    >
+		      <span>Entertainment: Cartoon & Animations</span>
+		    </button>
+		  </div>
+		  
+		</div>
+	</body>
+</html>

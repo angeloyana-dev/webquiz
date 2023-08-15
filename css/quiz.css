@@ -1,0 +1,339 @@
+@keyframes loading-animation {
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.caption {
+	font-size: 0.9rem;
+	color: #3a455e;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+html {
+	font-size: 16px;
+	font-family: "Lexend Deca";
+	color: #0f172a;
+}
+
+body {
+	height: 100vh;
+	background: #f8fafc;
+	display: flex;
+	position: relative;
+}
+
+#preloader {
+	width: 100%;
+	height: 100vh;
+	background: #f8fafc;
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	transition: 200ms;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#preloader div:first-child {
+	font-size: 1.7rem;
+	opacity: 1;
+	transition: 200ms;
+}
+
+#preloader div:first-child span {
+	opacity: 0;
+}
+
+#preloader div:first-child span:first-child {
+	animation: loading-animation 1s alternate-reverse infinite;
+}
+
+#preloader div:first-child span:nth-child(2) {
+	animation: loading-animation 1s alternate-reverse infinite;
+	animation-delay: 0.8s;
+}
+
+#preloader div:first-child span:last-child {
+	animation: loading-animation 1s alternate-reverse infinite;
+	animation-delay: 1.3s;
+}
+
+#preloader div:last-child {
+	opacity: 0;
+	display: none;
+	font-size: 1.175rem;
+	transition: 200ms;
+}
+
+.multiple-choices {
+	padding: 1.5rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background: #f8fafc;
+	position: relative;
+}
+
+.multiple-choices .heading {
+	padding-bottom: 2rem;
+}
+
+.multiple-choices .heading h2 {
+	font-size: 1.2rem;
+	max-width: 75%;
+}
+
+.multiple-choices .heading button {
+	position: absolute;
+	top: 1.8rem;
+	right: 1.5rem;
+	border: none;
+	border-radius: 0.35rem;
+	font-family: "Lexend Deca";
+	transform: translateY(3px);
+	background: #0f172a;
+}
+
+.multiple-choices .heading button .fa-house {
+	padding: 0.6rem;
+	border-radius: 0.35rem;
+	display: block;
+	transform: translateY(-6px);
+	transition: 150ms;
+	font-size: 1rem;
+	background: #1e293b;
+	color: #f8fafc;
+}
+
+.multiple-choices .heading button:active .fa-house {
+	transform: translateY(-2px);
+}
+
+.multiple-choices .sub-heading {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 0.5em;
+	text-align: center;
+	border-bottom: 1.5px solid #0f172a;
+}
+
+.multiple-choices .sub-heading .caption {
+	font-size: 0.7rem;
+}
+
+.multiple-choices .main {
+	flex: 1;
+	margin-top: 0.6rem;
+	display: flex;
+	align-items: space-between;
+	flex-direction: column;
+	position: relative;
+}
+
+.multiple-choices .main .question {
+	padding: 1.4rem;
+	margin-bottom: 1.5rem;
+	background: #e2e8f0;
+	border-radius: 0.5rem;
+}
+
+.multiple-choices .main .question p {
+	font-size: 0.935rem;
+}
+
+.multiple-choices .main #choicesWrapper {
+	padding-bottom: 0.5rem;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: calc((0.7rem * 2) + (0.75rem * 2) + 1rem);
+}
+
+.multiple-choices .main #choicesWrapper button {
+	transition: 200ms, transform 150ms;
+	opacity: 1;
+	border: none;
+	border-radius: 0.35rem;
+	font-family: "Lexend Deca";
+	transform: translateY(3px);
+	background: #27272a;
+}
+
+.multiple-choices .main #choicesWrapper button span {
+	padding: 0.6rem;
+	border-radius: 0.35rem;
+	display: block;
+	transform: translateY(-6px);
+	transition: 150ms;
+	font-size: 1rem;
+	background: #3f3f46;
+	color: #f8fafc;
+	padding: 0.75rem;
+}
+
+.multiple-choices .main #choicesWrapper button:active span {
+	transform: translateY(-2px);
+}
+
+.multiple-choices .main .submit-button {
+	width: 100%;
+	padding: 0.7rem 1.5rem;
+	background: #f8fafc;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+.multiple-choices .main .submit-button button {
+	width: 100%;
+	border: none;
+	border-radius: 0.35rem;
+	font-family: "Lexend Deca";
+	transform: translateY(3px);
+	background: #3b83f6;
+	opacity: 0;
+	display: none;
+	transform: translateY(20px);
+	transition: 150ms;
+}
+
+.multiple-choices .main .submit-button button span {
+	padding: 0.6rem;
+	border-radius: 0.35rem;
+	display: block;
+	transform: translateY(-6px);
+	transition: 150ms;
+	font-size: 1rem;
+	background: #60a5fa;
+	color: #f8fafc;
+	padding: 0.65rem;
+}
+
+.multiple-choices .main .submit-button button:active span {
+	transform: translateY(-2px);
+}
+
+.correct-btn {
+	background: #16a34a !important;
+}
+
+.correct-btn span {
+	background: #22c55e !important;
+}
+
+.wrong-btn {
+	background: #dc2626 !important;
+}
+
+.wrong-btn span {
+	background: #ef4444 !important;
+}
+
+.finalResultPage {
+	width: 100%;
+	height: 100vh;
+	background: #00000025;
+	backdrop-filter: blur(3px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	opacity: 0;
+	align-items: center;
+	transition: 150ms;
+}
+
+.finalResultPage .wrapper {
+	width: 100%;
+	background: #f8fafc;
+	padding: 2rem;
+	text-align: center;
+	transform: translateY(100%);
+	transition: 150ms;
+}
+
+.finalResultPage .wrapper h3 {
+	padding-bottom: 0.7rem;
+	padding-top: 0;
+	border-bottom: 1.5px solid #0f172a;
+}
+
+.finalResultPage .wrapper p {
+	padding: 1.3rem;
+	margin: 1.15rem;
+	background: #e2e8f0;
+	border-radius: 0.5rem;
+}
+
+.finalResultPage .wrapper p #resultPointsDisplay {
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.finalResultPage .wrapper .button-group {
+	width: 100%;
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+}
+
+.finalResultPage .wrapper .button-group button {
+	border: none;
+	border-radius: 0.35rem;
+	font-family: "Lexend Deca";
+	transform: translateY(3px);
+	background: #3b83f6;
+}
+
+.finalResultPage .wrapper .button-group button span,
+.finalResultPage .wrapper .button-group button .fa-square-poll-vertical {
+	padding: 0.6rem;
+	border-radius: 0.35rem;
+	display: block;
+	transform: translateY(-6px);
+	transition: 150ms;
+	font-size: 1rem;
+	background: #60a5fa;
+	color: #f8fafc;
+	padding: 0.65rem;
+}
+
+.finalResultPage .wrapper .button-group button:active span {
+	transform: translateY(-2px);
+}
+
+.finalResultPage .wrapper .button-group button:nth-child(2) {
+	background: #0f172a;
+}
+
+.finalResultPage .wrapper .button-group button:nth-child(2) span {
+	background: #1e293b;
+}
+
+.finalResultPage .wrapper .button-group button:last-child {
+	background: #0890b2;
+}
+
+.finalResultPage .wrapper .button-group button:last-child .fa-square-poll-vertical {
+	background: #06b5d4;
+	font-size: calc(1.4rem - 2.7px);
+	padding: 0.65rem 0.7rem;
+}
+
+.finalResultPage .wrapper .button-group button:last-child:active .fa-square-poll-vertical {
+	transform: translateY(-2px);
+}

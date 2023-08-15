@@ -1,0 +1,359 @@
+$slate-dark: hsl(222, 47.4%, 11.2%);
+$slate-sub-dark: hsl(217, 32.6%, 17.5%);
+$slate-caption: #3a455e;
+$slate-gray: hsl(214, 31.8%, 91.4%);
+$slate-white: hsl(210, 40%, 98%);
+$blue-dark: hsl(217, 91.2%, 59.8%);
+$blue-sub-dark: hsl(213, 93.9%, 67.8%);
+$green-dark: hsl(142, 76.2%, 36.3%);
+$green-sub-dark: hsl(142, 70.6%, 45.3%);
+$red-dark: hsl(0, 72.2%, 50.6%);
+$red-sub-dark: hsl(0, 84.2%, 60.2%);
+$btn-pad: 1rem;
+$main-ff: 'Lexend Deca';
+$heading-ff: 'Montserrat';
+
+@mixin boxShadow(){
+	box-shadow: 0 5px 7px #00000015;
+}
+
+@mixin headingSize($type){
+	@if $type == main{
+		font-size: 2rem;
+	}
+	@if $type == sub{
+		font-size: 1.2rem;
+	}
+}
+
+@mixin flexCenter(){
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin btnFront($bg, $color, $padding, $radius){
+	padding: 0.6rem;
+  border-radius: 0.35rem;
+  display: block;
+  transform: translateY(-6px);
+  transition: 150ms;
+  font-size: 1rem;
+  background: $bg;
+  color: $color;
+  
+  @if $padding{
+  	padding: $padding;
+  }
+  @if $radius{
+  	border-radius: $radius;
+  }
+}
+
+@mixin btnBack($bg, $radius){
+	border: none;
+  border-radius: 0.35rem;
+  font-family: "Lexend Deca";
+  transform: translateY(3px);
+  background: $bg;
+  
+  @if $radius{
+  	border-radius: $radius;
+  }
+}
+
+@mixin btnAnimate(){
+	transform: translateY(-2px);
+}
+
+@keyframes loading-animation {
+	50% {
+		opacity: 1;
+	}
+	
+	100%{
+		opacity: 0;
+	}
+}
+
+.caption{
+	font-size: 0.9rem;
+	color: $slate-caption;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+html{
+	font-size: 16px;
+	font-family: $main-ff;
+	color: $slate-dark;
+}
+
+body{
+	height: 100vh;
+	background: $slate-white;
+	display: flex;
+	position: relative;
+}
+
+#preloader{
+	width: 100%;
+	height: 100vh;
+	background: $slate-white;
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	transition: 200ms;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	div:first-child{
+		font-size: 1.7rem;
+		opacity: 1;
+		transition: 200ms;
+		
+		span{
+			opacity: 0;
+			
+			&:first-child{
+				animation: loading-animation 1s alternate-reverse infinite;
+			}
+			&:nth-child(2){
+				animation: loading-animation 1s alternate-reverse infinite;
+				animation-delay: 0.8s;
+			}
+			&:last-child{
+				animation: loading-animation 1s alternate-reverse infinite;
+				animation-delay: 1.3s;
+			}
+		}
+	}
+	
+	div:last-child{
+		opacity: 0;
+		display: none;
+		font-size: 1.175rem;
+		transition: 200ms;
+	}
+}
+
+.multiple-choices{
+	padding: 1.5rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background: $slate-white;
+	position: relative;
+	
+	.heading{
+		padding-bottom: 2rem;
+		
+		h2{
+			@include headingSize(sub)
+			max-width: 75%;
+		}
+		
+		button{
+			position: absolute;
+			top: 1.8rem;
+			right: 1.5rem;
+			@include btnBack($slate-dark, false);
+			
+			.fa-house{
+				@include btnFront($slate-sub-dark, $slate-white, false, false);
+			}
+			
+			&:active .fa-house{
+				@include btnAnimate();
+			}
+		}
+	}
+	
+	.sub-heading{
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 0.5em;
+		text-align: center;
+		border-bottom: 1.5px solid $slate-dark;
+		
+		.caption{
+			font-size: 0.7rem;
+		}
+	}
+	
+	.main{
+		flex: 1;
+		margin-top: 0.6rem;
+		display: flex;
+		align-items: space-between;
+		flex-direction: column;
+		position: relative;
+		
+		.question{
+			padding: 1.4rem;
+			margin-bottom: 1.5rem;
+			background: $slate-gray;
+			border-radius: 0.5rem;
+			
+			p{
+				font-size: 0.935rem;
+			}
+		}
+		
+		#choicesWrapper{
+			padding-bottom: 0.5rem;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			margin-bottom: calc((0.7rem * 2) + (0.75rem * 2) + 1rem);
+			
+			button{
+				transition: 200ms, transform 150ms;
+				opacity: 1;
+				@include btnBack(hsl(240, 3.7%, 15.9%), false);
+				
+				span{
+					@include btnFront(hsl(240, 5.3%, 26.1%), $slate-white, 0.75rem, false);
+				}
+				
+				&:active span{
+					@include btnAnimate();
+				}
+			}
+		}
+		
+		.submit-button{
+			width: 100%;
+			padding: 0.7rem 1.5rem;
+			background: $slate-white;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			
+			button{
+				width: 100%;
+				@include btnBack($blue-dark, false);
+				opacity: 0;
+				display: none;
+				transform: translateY(20px);
+				transition: 150ms;
+				
+				span{
+					@include btnFront($blue-sub-dark, $slate-white, 0.65rem, false);
+				}
+				
+				&:active span{
+					@include btnAnimate();
+				}
+			}
+		}
+	}
+}
+
+.correct-btn{
+	background: $green-dark !important;
+	
+	span{
+		background: $green-sub-dark !important;
+	}
+}
+
+.wrong-btn{
+	background: $red-dark !important;
+	
+	span{
+		background: $red-sub-dark !important;
+	}
+}
+
+.finalResultPage{
+	width: 100%;
+	height: 100vh;
+	background: #00000025;
+	backdrop-filter: blur(3px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	opacity: 0;
+	align-items: center;
+	transition: 150ms;
+	
+	.wrapper{
+		width: 100%;
+		background: $slate-white;
+		padding: 2rem;
+		text-align: center;
+		transform: translateY(100%);
+		transition: 150ms;
+		
+		h3{
+			padding-bottom: 0.7rem;
+			padding-top: 0;
+			border-bottom: 1.5px solid $slate-dark;
+		}
+		
+		p{
+			padding: 1.3rem;
+			margin: 1.15rem;
+			background: $slate-gray;
+			border-radius: 0.5rem;
+			
+			#resultPointsDisplay{
+				font-size: 1.5rem;
+				font-weight: 500;
+			}
+		}
+		
+		.button-group{
+			width: 100%;
+			display: flex;
+			gap: 0.5rem;
+			justify-content: center;
+			
+			button{
+				@include btnBack($blue-dark, false);
+				
+				span,
+				.fa-square-poll-vertical{
+					@include btnFront($blue-sub-dark, $slate-white, 0.65rem, false);
+				}
+				
+				&:active span{
+					@include btnAnimate();
+				}
+				
+				&:nth-child(2){
+					background: $slate-dark;
+					
+					span{
+						background: $slate-sub-dark;
+					}
+				}
+				
+				&:last-child{
+					background: hsl(192, 91.4%, 36.5%);
+					
+					.fa-square-poll-vertical{
+						background: hsl(189, 94.5%, 42.7%);
+						font-size: calc(1.4rem - 2.7px);
+						padding: 0.65rem 0.7rem;
+					}
+					
+					&:active .fa-square-poll-vertical{
+						@include btnAnimate()
+					}
+				}
+			}
+		}
+	}
+}
