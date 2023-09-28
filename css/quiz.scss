@@ -41,6 +41,7 @@ $heading-ff: 'Montserrat';
   font-size: 1rem;
   background: $bg;
   color: $color;
+  cursor: pointer;
   
   @if $padding{
   	padding: $padding;
@@ -56,6 +57,7 @@ $heading-ff: 'Montserrat';
   font-family: "Lexend Deca";
   transform: translateY(3px);
   background: $bg;
+  cursor: pointer;
   
   @if $radius{
   	border-radius: $radius;
@@ -114,6 +116,7 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: wait;
 	
 	div:first-child{
 		font-size: 1.7rem;

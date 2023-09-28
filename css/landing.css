@@ -59,16 +59,19 @@ header div:first-child {
 
 .btn.main {
   background: hsl(222, 47.4%, 11.2%);
+  cursor: pointer;
 }
 
 .btn.main > span {
   background: hsl(217, 32.6%, 17.5%);
   color: #fff;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .btn.main-outline {
   background: hsl(222, 47.4%, 11.2%);
+  cursor: pointer;
 }
 
 .btn.main-outline > span {
@@ -77,6 +80,7 @@ header div:first-child {
   border: 1.5px solid hsl(222, 47.4%, 11.2%);
   color: hsl(222, 47.4%, 11.2%);
   font-size: 1rem;
+  cursor: pointer;
 }
 
 /* CUSTOMIZE SECTION */
@@ -136,6 +140,7 @@ header div:first-child {
   top: 0.8rem;
   right: 1rem;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .category-wrapper {
@@ -148,6 +153,7 @@ header div:first-child {
 
 .category-wrapper button {
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .question-type-wrapper {
@@ -166,6 +172,7 @@ header div:first-child {
 .btn.random-type {
   background: hsl(240, 5.9%, 10%);
   grid-column: span 2;
+  cursor: pointer;
 }
 
 .btn.random-type > span {
@@ -173,10 +180,12 @@ header div:first-child {
   padding: 0.7rem;
   background: hsl(240, 3.7%, 15.9%);
   color: #fff;
+  cursor: pointer;
 }
 
 .btn.multiple-choices {
   background: hsl(217, 91.2%, 59.8%);
+  cursor: pointer;
 }
 
 .btn.multiple-choices span {
@@ -184,10 +193,12 @@ header div:first-child {
   padding: 0.7rem;
   background: hsl(213, 93.9%, 67.8%);
   color: #fff;
+  cursor: pointer;
 }
 
 .btn.true-false {
   background: hsl(142, 76.2%, 36.3%);
+  cursor: pointer;
 }
 
 .btn.true-false span {
@@ -195,6 +206,7 @@ header div:first-child {
   padding: 0.7rem;
   background: hsl(142, 70.6%, 45.3%);
   color: #fff;
+  cursor: pointer;
 }
 
 .difficulty-wrapper {
@@ -220,40 +232,48 @@ header div:first-child {
 
 .btn.random {
   background: hsl(217, 91.2%, 59.8%);
+  cursor: pointer;
 }
 
 .btn.random > span {
   background: hsl(213, 93.9%, 67.8%);
   color: #fff;
+  cursor: pointer;
 }
 
 .btn.easy {
   background: hsl(142, 76.2%, 36.3%);
   grid-column: span 3;
+  cursor: pointer;
 }
 
 .btn.easy > span {
   background: hsl(142, 70.6%, 45.3%);
   color: #fff;
+  cursor: pointer;
 }
 
 .btn.medium {
   background: hsl(25, 95%, 53.1%);
   grid-column: span 3;
+  cursor: pointer;
 }
 
 .btn.medium > span {
   background: hsl(27, 96%, 61%);
   color: #fff;
+  cursor: pointer;
 }
 
 .btn.hard {
   background: hsl(0, 72.2%, 50.6%);
+  cursor: pointer;
 }
 
 .btn.hard > span {
   background: hsl(0, 84.2%, 60.2%);
   color: #fff;
+  cursor: pointer;
 }
 
 .counter-group {
@@ -273,10 +293,12 @@ header div:first-child {
 .counter-group button {
   background: hsl(222, 47.4%, 11.2%);
   color: #fff;
+  cursor: pointer;
 }
 
 .submit-wrapper .btn {
   width: 100%;
+  cursor: pointer;
 }
 
 #categoriesList {
@@ -319,6 +341,7 @@ header div:first-child {
   font-size: 1.45rem;
   display: grid;
   place-items: center;
+  cursor: pointer;
 }
 
 #categoriesList div:last-child {
