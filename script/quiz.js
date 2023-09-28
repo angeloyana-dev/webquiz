@@ -220,5 +220,5 @@ function tryAgain(){
 }
 
 function goToLanding(){
-	window.location.href = 'landing.html'
+	window.location.href = 'index.html'
 }
